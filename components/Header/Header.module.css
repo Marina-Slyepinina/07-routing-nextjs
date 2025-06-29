@@ -7,14 +7,14 @@
     color: white;
 }
 
-.header a {
+.headerLink {
     text-decoration: none;
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-.header a:hover {
+.headerLink:hover {
     color: #ddd;
 }
 
@@ -26,16 +26,16 @@
     gap: 1rem;
 }
 
-.navigation li {
-    align-content: center;
+.navigationItem {
+    display: flex;
+    align-items: center;
 }
 
-.navigation li a {
+.navigationLink {
     text-decoration: none;
     color: white;
     font-size: 1rem;
 }
 
-.navigation li a:hover {
-    color: #ddd;
-}
+.navigationLink:hover {
+    color: #ddd; }

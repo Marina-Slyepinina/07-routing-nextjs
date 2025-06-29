@@ -6,7 +6,7 @@ import { useDebounce } from 'use-debounce';
 import { fetchNotes, NotesResponse } from "@/lib/api";
 import NoteList from "@/components/NoteList/NoteList";
 import Pagination from "@/components/Pagination/Pagination";
-import NoteModal from "@/components/NoteModal/NoteModal";
+import Modal from "@/components/Modal/Modal";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import css from "./Notes.client.module.css";
@@ -54,9 +54,9 @@ return <>
     {isSuccess && data.notes.length > 0 && <NoteList notes={data.notes} />}
     
     {isOpen &&
-        <NoteModal onClose={onClose}>
+        <Modal onClose={onClose}>
             <NoteForm onClose={onClose} />
-        </NoteModal>}
+        </Modal>}
 </>
 }
 

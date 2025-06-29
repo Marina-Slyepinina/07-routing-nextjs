@@ -8,7 +8,6 @@ import css from "./NoteDetailsClient.module.css";
 const NoteDetailsClient = () => {
     const { id } = useParams<{ id: string }>();
     const noteId = Number(id);
-    console.log("noteId", noteId);
 
     const { data: note, isLoading, error} = useQuery({
         queryKey: ["note", noteId],
@@ -23,12 +22,15 @@ const NoteDetailsClient = () => {
     return (
         <div className={css.container}>
         <div className={css.item}>
-                <div className={css.noteHeader}>
+                <div className={css.header}>
                     <h2>{note.title}</h2>
                     <button className={css.editBtn}>Edit note</button>
                 </div>
                 <p className={css.content}>{note.content}</p>
-                <p className={css.date}>{note.createdAt}</p>
+                <div className={css.info}>
+                    <span className={css.tag}>{note.tag}</span>
+                    <p className={css.date}>{note.createdAt}</p>
+                </div>
             </div> 
         </div>
     );

@@ -1,15 +1,14 @@
 'use client'
-
 import { createPortal } from "react-dom";
-import css from "./NoteModal.module.css";
+import css from "./Modal.module.css";
 import { useEffect } from "react";
 
-interface NoteModalProps {
+interface ModalProps {
     children: React.ReactNode,
     onClose: () => void,
 }
 
-export default function NoteModal({ children, onClose }: NoteModalProps) {
+export default function Modal({ children, onClose }: ModalProps) {
 
     const handleBackdrop = (e: React.MouseEvent<HTMLDivElement>) => {
         if (e.target === e.currentTarget) {
@@ -39,6 +38,7 @@ return createPortal(
         >
         <div className={css.modal}>
             {children}
+            <button onClick={onClose}>Close</button>
         </div>
     </div>,
     document.body

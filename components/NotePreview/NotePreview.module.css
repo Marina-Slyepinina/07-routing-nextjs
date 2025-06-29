@@ -34,13 +34,6 @@
     white-space: pre-wrap;
 }
 
-.info {
-    min-width: 250px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .date {
     font-size: 14px;
     color: #888;
@@ -71,5 +64,4 @@
     cursor: pointer;
     text-decoration: underline;
     display: inline-block;
-    background-color: transparent; 
-}
+    background-color: transparent; }
