@@ -1,8 +1,6 @@
-// import Modal from "@/components/Modal/Modal";
 import { fetchNoteById } from "@/lib/api";
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
-// import NoteDetailsClient from "@/app/notes/[id]/NoteDetails.client";
-import NotePreview from "@/components/NotePreview/NotePreview";
+import NotePreview from "./NotePreview";
 
 type Props = {
     params: Promise<{ id: string }>;
