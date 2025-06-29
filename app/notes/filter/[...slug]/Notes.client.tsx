@@ -15,9 +15,10 @@ interface NotesClientProps {
     initialData: NotesResponse;
     initialSearch: string;
     initialPage: number;
+    tag: string
 }
   
-export default function NotesClient({initialData, initialSearch, initialPage}: NotesClientProps) {  
+export default function NotesClient({initialData, initialSearch, initialPage, tag}: NotesClientProps) {  
     const [inputValue, setInputValue] = useState(initialSearch);
     const [page, setPage] = useState<number>(initialPage);
     const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -27,11 +28,11 @@ export default function NotesClient({initialData, initialSearch, initialPage}: N
     const onOpen = () => setIsOpen(true);
 
     const { data, isSuccess } = useQuery({
-        queryKey: ["notes", debouncedValue, page],
-        queryFn: () => fetchNotes(debouncedValue, page),
+        queryKey: ["notes", debouncedValue, page, tag],
+        queryFn: () => fetchNotes(debouncedValue, page, tag),
         placeholderData: keepPreviousData,
         refetchOnMount: false,
-        initialData: initialData,
+        initialData,
     })
 
     const onSearch = (value: string) => {
@@ -40,19 +41,22 @@ export default function NotesClient({initialData, initialSearch, initialPage}: N
     };
     
 return <>
-<div className={css.app}>
-    <div className={css.toolbar}>
-        <SearchBox value={inputValue} onSearch={onSearch}/>
-        
-        {isSuccess && data.totalPages > 1 && <Pagination totalPages={data.totalPages} currentPage={page} onPageChange={setPage} />}
+    <div className={css.app}>
+        <div className={css.toolbar}>
+            <SearchBox value={inputValue} onSearch={onSearch}/>
             
-        <button className={css.button} onClick={onOpen}>Create note +</button>
+            {isSuccess && data.totalPages > 1 && <Pagination totalPages={data.totalPages} currentPage={page} onPageChange={setPage} />}
+                
+            <button className={css.button} onClick={onOpen}>Create note +</button>
+        </div>
     </div>
-</div>
-{isSuccess && data.notes.length > 0 && <NoteList notes={data.notes} />}
-{isOpen && <NoteModal onClose={onClose}>
-    <NoteForm onClose={onClose} />
-</NoteModal>}
+        
+    {isSuccess && data.notes.length > 0 && <NoteList notes={data.notes} />}
+    
+    {isOpen &&
+        <NoteModal onClose={onClose}>
+            <NoteForm onClose={onClose} />
+        </NoteModal>}
 </>
 }
 

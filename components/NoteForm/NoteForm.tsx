@@ -24,9 +24,8 @@ const NoteFormSchema = Yup.object().shape({
         .required("Title is required"),
     content: Yup.string()
         .max(500, "Content is too long"),
-    tag: Yup.string()
+    tag: Yup.string().oneOf(["Todo", "Work", "Personal", "Meeting", "Shopping"])
         .required("Tag is required")
-
   });
 
 export default function NoteForm({ onClose }: NoteFormProps) {

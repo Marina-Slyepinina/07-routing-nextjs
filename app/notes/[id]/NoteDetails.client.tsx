@@ -8,15 +8,13 @@ import css from "./NoteDetailsClient.module.css";
 const NoteDetailsClient = () => {
     const { id } = useParams<{ id: string }>();
     const noteId = Number(id);
-    console.log("paramId", noteId);
+    console.log("noteId", noteId);
 
     const { data: note, isLoading, error} = useQuery({
         queryKey: ["note", noteId],
         queryFn: () => fetchNoteById(noteId),
         refetchOnMount: false,
     });
-
-    console.log("note", note);
 
     if (isLoading) return <p>Loading, please wait...</p>;
 

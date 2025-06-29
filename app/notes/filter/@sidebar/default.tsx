@@ -1,0 +1,27 @@
+import Link from "next/link";
+import css from "./SidebarPage.module.css";
+
+const tags = ["Todo", "Work", "Personal", "Meeting", "Shopping"];
+
+const SidebarPage = () => {
+
+return <div className={css.menuContainer}>
+    <ul className={css.menuList}>
+        <li className={css.menuItem}>
+        <Link href="/notes/filter/all" className={css.menuLink}>
+            All notes
+        </Link>
+        </li>
+
+        {tags.map((tag, index) => (
+        <li key={index} className={css.menuItem}>
+            <Link href={`/notes/filter/${tag}`} className={css.menuLink}>
+            {tag}
+            </Link>
+        </li>
+        ))}
+    </ul>
+</div>   
+}
+
+export default SidebarPage;

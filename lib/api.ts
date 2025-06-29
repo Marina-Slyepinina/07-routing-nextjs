@@ -9,13 +9,14 @@ export interface NotesResponse {
 
 const perPage = 12;
 
-export const fetchNotes = async (query: string, page: number): Promise<NotesResponse> => {
+export const fetchNotes = async (query: string, page: number, tag: string): Promise<NotesResponse> => {
     const res = await axios.get<NotesResponse>("https://notehub-public.goit.study/api/notes", {
         headers: {
             Authorization: `Bearer ${token}`,
         },
         params: {
-            ...(query !== ""? {search: query} : {}),
+            ...(tag !== "all" ? {tag: tag} : {}),
+            ...(query !== "" ? {search: query} : {}),
             page,
             perPage
         }
