@@ -10,7 +10,7 @@ return (
             <p>Developer: Maryna Smirnova</p>
             <p>
                 Contact us:
-                <a href="mailto:student@notehub.app">student@notehub.app</a>
+                <a href="mailto:student@notehub.app"> student@notehub.app</a>
             </p>
             </div>
         </div>

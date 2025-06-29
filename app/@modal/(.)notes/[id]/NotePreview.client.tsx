@@ -12,6 +12,7 @@ const NotePreview = () => {
     const { data: note } = useQuery({
         queryKey: ["note", id],
         queryFn: () => fetchNoteById(Number(id)),
+        refetchOnMount: false,
     });
 
     if (!note) return <p>Something went wrong.</p>;

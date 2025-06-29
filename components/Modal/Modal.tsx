@@ -18,14 +18,17 @@ export default function Modal({ children, onClose }: ModalProps) {
     
     useEffect(() => {
         const onEscape = (e: KeyboardEvent) => {
-        if (e.code === "Escape") {
-            onClose();
-        }
+            if (e.code === "Escape") {
+                onClose();
+            }
         };
         document.addEventListener("keydown", onEscape);
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
 
         return () => {
-        document.removeEventListener("keydown", onEscape);
+            document.removeEventListener("keydown", onEscape);
+            document.body.style.overflow = originalOverflow;
         };
     }, [onClose]);
 

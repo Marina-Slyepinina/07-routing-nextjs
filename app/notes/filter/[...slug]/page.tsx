@@ -7,8 +7,7 @@ type Props = {
 
 export default async function Notes({params}: Props) {  
     const { slug } = await params;
-    const tag = (slug[0] !== "" ? slug[0] : "");
-    console.log("tag ", tag);
+    const tag = slug?.[0] ?? "";
 
     const initialSearch = "";
     const initialPage = 1;

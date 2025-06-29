@@ -13,8 +13,8 @@ return <div className={css.menuContainer}>
         </Link>
         </li>
 
-        {tags.map((tag, index) => (
-        <li key={index} className={css.menuItem}>
+        {tags.map((tag) => (
+        <li key={tag} className={css.menuItem}>
             <Link href={`/notes/filter/${tag}`} className={css.menuLink}>
             {tag}
             </Link>

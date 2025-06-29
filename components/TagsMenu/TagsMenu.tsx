@@ -22,8 +22,8 @@ return <div className={css.menuContainer}>
         All notes
       </Link>
     </li>
-    {tags.map((tag, index) => (
-      <li onClick={onClose} key={index} className={css.menuItem}>
+    {tags.map((tag) => (
+      <li onClick={onClose} key={tag} className={css.menuItem}>
         <Link href={`/notes/filter/${tag}`} className={css.menuLink}>
           {tag}
         </Link>
